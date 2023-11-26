@@ -1,10 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        def commitHash = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim() 
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -17,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image with the commit hash as the tag
-                    sh "docker build . --file Dockerfile --tag nodejs:${commitHash}"
+                    sh "docker build . --file Dockerfile --tag python-v1.1"
                 }
             }
         }
@@ -30,10 +25,10 @@ pipeline {
                         sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
 
                         echo "Tagging the image"
-                        sh "docker tag nodejs:${commitHash} omarsater/private-repo:v-${commitHash}"
+                        sh "docker tag python-v1.1 omarsater/private-repo:python-v1.1"
 
                         echo "Pushing to dockerhub ..."
-                        sh "docker push omarsater/private-repo:v-${commitHash}"
+                        sh "docker push omarsater/private-repo:python-v1.1"
                     }
                 }
             }
@@ -55,5 +50,4 @@ pipeline {
             }
         }
     }
-
 }
