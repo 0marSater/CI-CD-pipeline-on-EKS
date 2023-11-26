@@ -1,0 +1,6 @@
+# Default ignored files
+.idea/
+terraform/.terraform
+terraform/.terraform.*
+terraform/terraform.tfs*
+k8s/Jenkins
