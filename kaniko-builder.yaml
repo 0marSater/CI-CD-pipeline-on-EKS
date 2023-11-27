@@ -1,0 +1,24 @@
+kind: Pod
+metadata:
+  name: kaniko
+  namespace: jenkins-ns
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    imagePullPolicy: Always
+    command:
+    - /busybox/cat
+    tty: true
+    volumeMounts:
+    - name: docker-config
+      mountPath: /kaniko/.docker
+  volumes:
+  - name: docker-config
+    projected:
+      sources:
+      - secret:
+          name: my-registery-key
+          items:
+          - key: .dockerconfigjson
+            path: config.json
