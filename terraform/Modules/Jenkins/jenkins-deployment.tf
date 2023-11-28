@@ -24,10 +24,15 @@ resource "kubernetes_deployment" "jenkins_deployment" {
       }
 
       spec {
+        service_account_name = "jenkins-admin"
         container {
           name  = "jenkins"
           image = "jenkins/jenkins:lts"
-
+          security_context {
+            # fs_group = 1000
+            run_as_user  = 0
+            privileged = true
+          }
           port {
             container_port = 8080
           }
@@ -38,7 +43,7 @@ resource "kubernetes_deployment" "jenkins_deployment" {
 
           volume_mount {
             name      = "jenkins-vol"
-            mount_path = "/var/jenkins_vol"
+            mount_path = "/var/jenkins_home"
           }
         }
 

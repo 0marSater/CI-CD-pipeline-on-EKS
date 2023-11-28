@@ -1,7 +1,7 @@
 kind: Pod
 metadata:
   name: kaniko
-  # namespace: jenkins-ns
+  namespace: jenkins-ns
 spec:
   containers:
   - name: kaniko
