@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy on EKS') {
             steps {
                 script {
-                    ssh """
+                    sh '''
                         cd /k8s/app &&
                         kubectl apply -f app-ns.yaml &&
                         kubectl apply -f app-secret.yaml &&
@@ -34,7 +34,7 @@ pipeline {
                         kubectl apply -f app-pvc.yaml &&
                         kubectl apply -f app-deployment.yaml &&
                         kubectl apply -f app-svc.yaml 
-                    """     
+                    '''     
                 }
             }
         }
