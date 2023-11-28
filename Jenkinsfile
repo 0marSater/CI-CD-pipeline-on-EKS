@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        cd /k8s/app &&
+                        cd ${WORKSPACE}/k8s/app &&
                         kubectl apply -f app-ns.yaml &&
                         kubectl apply -f app-secret.yaml &&
                         kubectl apply -f app-sc.yaml &&
