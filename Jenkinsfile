@@ -26,6 +26,7 @@ pipeline {
         stage('Deploy on EKS') {
             steps {
                 container (name:'kubectl' ) {
+                    withCredentials([file(credentialsId: 'KUBECONFIGFILE', variable: 'KUBECONFIG')]) {
                     sh '''
                         cd ${WORKSPACE}/k8s/app &&
                         kubectl apply -f app-ns.yaml &&
