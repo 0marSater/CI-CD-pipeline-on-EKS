@@ -20,9 +20,10 @@ spec:
       - "/bin/sh"
       - "-c"
       - "sleep 99d"
-    imagePullPolicy: Always
-
     tty: true
+    securityContext:
+      runAsUser: 0
+    restartPolicy: Never
 
   volumes:
   - name: docker-config
