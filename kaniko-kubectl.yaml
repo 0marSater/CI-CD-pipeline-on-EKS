@@ -22,7 +22,7 @@ spec:
       - "sleep 99d"
     tty: true
     securityContext:
-      # runAsUser: 0
+      runAsUser: 0 #if isn't set, it will cause in logic error
   restartPolicy: Never
 
   volumes:
