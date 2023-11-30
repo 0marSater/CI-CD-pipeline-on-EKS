@@ -26,15 +26,7 @@ pipeline {
         stage('Deploy on EKS') {
             steps {
                 container (name:'kubectl' ) {
-                    sh '''
-                        cd ${WORKSPACE}/k8s/app &&
-                        kubectl apply -f app-ns.yaml &&
-                        kubectl apply -f app-secret.yaml &&
-                        kubectl apply -f app-sc.yaml &&
-                        kubectl apply -f app-pvc.yaml &&
-                        kubectl apply -f app-deployment.yaml &&
-                        kubectl apply -f app-svc.yaml 
-                    '''     
+                    sh 'echo "hi"'
                 }
             }
         }
