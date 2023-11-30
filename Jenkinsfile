@@ -28,7 +28,8 @@ pipeline {
                 container (name:'kubectl', shell: '/bin/sh' ) {
                     withCredentials([file(credentialsId: 'KUBECONFIGFILE', variable: 'KUBECONFIG')]) {
                     sh '''
-                        echo $KUBECONFIG > /.kube/config
+                        echo $KUBECONFIG > /.kube/config &&
+                        kubectl get pod 
                     '''
                     }
                 }
