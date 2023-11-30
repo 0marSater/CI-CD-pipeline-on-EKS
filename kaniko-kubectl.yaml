@@ -18,8 +18,9 @@ spec:
     image: bitnami/kubectl
     imagePullPolicy: Always
     command:
-      - "sleep"
-      - "240"
+    - /busybox/cat
+      # - "sleep"
+      # - "240"
     tty: true
 
   volumes:
