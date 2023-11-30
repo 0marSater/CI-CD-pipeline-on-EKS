@@ -17,9 +17,6 @@ spec:
   - name: kubectl
     image: bitnami/kubectl
     imagePullPolicy: Always
-    command:
-      - sleep
-      - 240
     tty: true
 
   volumes:
