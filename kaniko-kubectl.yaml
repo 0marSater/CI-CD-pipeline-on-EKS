@@ -10,16 +10,16 @@ spec:
     command:
     - /busybox/cat
     tty: true
+  - name: kaniko
+    image: bitnami/kubectl
+    imagePullPolicy: Always
+    command:
+      - "sleep"
+      - "240"
+    tty: true
     volumeMounts:
     - name: docker-config
       mountPath: /kaniko/.docker
-    - name: kaniko
-      image: bitnami/kubectl
-      imagePullPolicy: Always
-      command:
-        - "sleep"
-        - "240"
-      tty: true
   volumes:
   - name: docker-config
     projected:
