@@ -2,6 +2,7 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'kaniko-builder.yaml'
+            yamlFile 'kubectl-container.yaml'
         }
     }
 
@@ -25,7 +26,7 @@ pipeline {
        
         stage('Deploy on EKS') {
             steps {
-                script {
+                container (name:'kubectl' ) {
                     sh '''
                         cd ${WORKSPACE}/k8s/app &&
                         kubectl apply -f app-ns.yaml &&
