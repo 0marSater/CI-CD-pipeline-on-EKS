@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "jenkins_deployment" {
   metadata {
-    name      = "jenkins"
+    name      = "jenkins-deployment"
     namespace = "jenkins-ns"
     labels    = {
       app = "jenkins-app"
