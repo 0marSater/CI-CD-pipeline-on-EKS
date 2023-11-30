@@ -26,7 +26,11 @@ pipeline {
         stage('Deploy on EKS') {
             steps {
                 container (name:'kubectl' ) {
-                    sh 'echo "hi"'
+                    sh '''
+                        echo "Current directory: $(pwd)"
+                        echo "Contents of the directory: $(ls -la)"
+                        echo "Kubectl version: $(kubectl version --short)"
+                    '''
                 }
             }
         }
