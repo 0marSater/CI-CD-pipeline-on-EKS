@@ -25,16 +25,10 @@ pipeline {
        
         stage('Deploy on EKS') {
             steps {
-                container (name:'kubectl' ) {
+                container (name:'kubectl', shell: '/bin/sh' ) {
                     withCredentials([file(credentialsId: 'KUBECONFIGFILE', variable: 'KUBECONFIG')]) {
                     sh '''
-                        cd ${WORKSPACE}/k8s/app &&
-                        kubectl apply -f app-ns.yaml &&
-                        kubectl apply -f app-secret.yaml &&
-                        kubectl apply -f app-sc.yaml &&
-                        kubectl apply -f app-pvc.yaml &&
-                        kubectl apply -f app-deployment.yaml &&
-                        kubectl apply -f app-svc.yaml 
+                        echo $KUBECONFIG > /.kube/config
                     '''
                     }
                 }
@@ -44,4 +38,3 @@ pipeline {
 }
 
 
-//kubectl create secret docker-registry my-registery-key --namespace jenkins-ns --docker-server=https://index.docker.io/v1/ --docker-username=omarsater --docker-password=dckr_pat_NT57swECifLHxNT9yFBH372copU --docker-email=omar.buis22@gmail.com &&
