@@ -36,6 +36,7 @@ pipeline {
                         kubectl apply -f app-deployment.yaml &&
                         kubectl apply -f app-svc.yaml 
                     '''
+                    }
                 }
             }
         }
