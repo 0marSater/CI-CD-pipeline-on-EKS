@@ -29,7 +29,16 @@ pipeline {
                     withCredentials([file(credentialsId: 'KUBECONFIGFILE', variable: 'KUBECONFIG')]) {
                     sh '''
                         echo $KUBECONFIG > /.kube/config &&
-                        kubectl get pod 
+                        apt-get update &&
+                        apt-get install -y awscli &&  
+                        aws eks --region eu-west-1 update-kubeconfig --name my-cluster &&
+                        
+                        aws --version &&
+
+                        sed -i 's/apiVersion: client.authentication.k8s.io\\/v1alpha1/apiVersion: client.authentication.k8s.io\\/v1beta1/g' /.kube/config &&
+                        
+                        kubectl get pod &&
+                        kubectl apply -f /k8s/app/app-ns.yaml
                     '''
                     }
                 }
