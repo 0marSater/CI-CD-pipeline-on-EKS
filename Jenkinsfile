@@ -28,7 +28,7 @@ pipeline {
                 container (name:'kubectl', shell: '/bin/sh' ) {
                     withKubeConfig([credentialsId: 'KUBECONFIGFILE']) {
                     sh '''
-                        aws --version &&KUBECONFIGFILE
+                        aws --version &&
                         kubectl config view
                     '''
                     }
