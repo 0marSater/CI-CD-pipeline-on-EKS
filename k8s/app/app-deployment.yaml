@@ -22,7 +22,7 @@ spec:
           - containerPort: 5000
         volumeMounts:
           - name: app-vol
-            mountPath: /app/
+            mountPath: /app/data
       volumes:
       - name: app-vol  
         persistentVolumeClaim:
