@@ -15,14 +15,14 @@ spec:
       mountPath: /kaniko/.docker
   
   - name: kubectl
-    image: rancher/kubectl:v1.28.4
+    image: wialus/kubectl-aws-cli:2023.10.20
     command:
       - "/bin/sh"
       - "-c"
       - "sleep 99d"
     tty: true
-    # securityContext:
-    #   runAsUser: 0 #if isn't set, it will cause in logic error
+    securityContext:
+      runAsUser: 0 #if isn't set, it will cause in logic error
   restartPolicy: Never
 
   volumes:
