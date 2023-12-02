@@ -1,7 +1,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: ebs-sc
+  name: ebs-sc-app
   namespace: app-ns
 provisioner: kubernetes.io/aws-ebs
 parameters:
