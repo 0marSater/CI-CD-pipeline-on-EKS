@@ -26,15 +26,9 @@ pipeline {
         stage('Deploy on EKS') {
             steps {
                 container (name:'kubectl', shell: '/bin/sh' ) {
-                    withCredentials([file(credentialsId: 'KUBECONFIGFILE', variable: 'KUBECONFIG')]) {
+                    withCredentials([file(credentialsId: 'KUBECONFIGFILE')]) {
                     sh '''
-                        echo $KUBECONFIG > /.kube/config &&
-                        apt-get update &&
-                        apt-get install -y awscli &&  
-                        aws eks --region eu-west-1 update-kubeconfig --name my-cluster &&
-                        
                         aws --version &&
-
                         kubectl config view
                     '''
                     }
