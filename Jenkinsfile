@@ -26,9 +26,9 @@ pipeline {
         stage('Deploy on EKS') {
             steps {
                 container (name:'kubectl', shell: '/bin/sh' ) {
-                    withCredentials([file(credentialsId: 'KUBECONFIGFILE')]) {
+                    withKubeConfig([credentialsId: 'KUBECONFIGFILE']) {
                     sh '''
-                        aws --version &&
+                        aws --version &&KUBECONFIGFILE
                         kubectl config view
                     '''
                     }
