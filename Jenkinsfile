@@ -12,15 +12,15 @@ pipeline {
             }
         }
 
-        stage('Build & Push Docker Image') {
-            steps {
-                container(name: 'kaniko', shell: '/busybox/sh'){
-                    sh '''
-                        /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=omarsater/private-repo:python-v1.1
-                    '''
-                }
-            }
-        }
+        // stage('Build & Push Docker Image') {
+        //     steps {
+        //         container(name: 'kaniko', shell: '/busybox/sh'){
+        //             sh '''
+        //                 /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=omarsater/private-repo:python-v1.1
+        //             '''
+        //         }
+        //     }
+        // }
 
        
         stage('Deploy on EKS') {
