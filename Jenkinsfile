@@ -12,15 +12,15 @@ pipeline {
             }
         }
 
-        // stage('Build & Push Docker Image') {
-        //     steps {
-        //         container(name: 'kaniko', shell: '/busybox/sh'){
-        //             sh '''
-        //                 /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=omarsater/private-repo:python-v1.1
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Build & Push Docker Image') {
+            steps {
+                container(name: 'kaniko', shell: '/busybox/sh'){
+                    sh '''
+                        /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=omarsater/private-repo:python-v1.1
+                    '''
+                }
+            }
+        }
 
        
         stage('Deploy on EKS') {
@@ -35,10 +35,7 @@ pipeline {
                         
                         aws --version &&
 
-                        sed -i 's/apiVersion: client.authentication.k8s.io\\/v1alpha1/apiVersion: client.authentication.k8s.io\\/v1beta1/g' /.kube/config &&
-                        
-                        kubectl get pod &&
-                        kubectl apply -f /k8s/app/app-ns.yaml
+                        kubectl config view
                     '''
                     }
                 }
