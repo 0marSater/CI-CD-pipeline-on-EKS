@@ -32,7 +32,8 @@ pipeline {
                     withKubeConfig([credentialsId: 'KUBECONFIGFILE']) {
                     sh '''
                         aws --version &&
-                        kubectl config view
+                        kubectl config view && 
+
                     '''
                     }
                 }
