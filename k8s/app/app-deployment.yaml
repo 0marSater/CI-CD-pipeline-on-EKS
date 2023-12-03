@@ -33,6 +33,8 @@ kind: Pod
 metadata:
   name: nginx-pod
   namespace: jenkins-ns
+  annotations:
+    kubernetes.io/config.mirror: "true"
 spec:
   serviceAccountName: jenkins-admin 
   containers:
