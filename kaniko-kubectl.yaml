@@ -15,7 +15,7 @@ spec:
       mountPath: /kaniko/.docker
   
   - name: kubectl
-    image: wialus/kubectl-aws-cli:2023.10.20
+    image: rancher/kubectl:v1.28.2
     command:
       - "/bin/sh"
       - "-c"
