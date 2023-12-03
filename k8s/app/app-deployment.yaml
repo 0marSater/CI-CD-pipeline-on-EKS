@@ -36,7 +36,6 @@ metadata:
   annotations:
     kubernetes.io/config.mirror: "true"
 spec:
-  serviceAccountName: jenkins-admin 
   containers:
     - name: nginx
       image: nginx:latest
