@@ -25,6 +25,16 @@ resource "kubernetes_role" "jenkins_role" {
     resources  = ["secrets"]
     verbs      = ["get"]
   }
+  rule {
+    api_groups = [""]
+    resources  = ["namespaces"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
+  }
+  rule {
+    api_groups = ["apps"]
+    resources  = ["deployments"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
+  }
 }
 
 # apiVersion: rbac.authorization.k8s.io/v1
