@@ -1,12 +1,12 @@
 resource "aws_eks_node_group" "worker_node" {
   cluster_name    = aws_eks_cluster.this.name
-  node_group_name = var.node_group_name 
+  node_group_name = var.node_group_name
   node_role_arn   = aws_iam_role.eks_worker_node_group.arn
   subnet_ids      = var.subnet_ids
 
-  instance_types  = var.instance_types
-  disk_size       = var.disk_size
-  ami_type        = var.ami_type
+  instance_types = var.instance_types
+  disk_size      = var.disk_size
+  ami_type       = var.ami_type
 
 
   scaling_config {

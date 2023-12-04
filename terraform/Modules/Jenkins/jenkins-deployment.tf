@@ -2,7 +2,7 @@ resource "kubernetes_deployment" "jenkins_deployment" {
   metadata {
     name      = "jenkins-deployment"
     namespace = "jenkins-ns"
-    labels    = {
+    labels = {
       app = "jenkins-app"
     }
   }
@@ -30,8 +30,8 @@ resource "kubernetes_deployment" "jenkins_deployment" {
           image = "jenkins/jenkins:lts"
           security_context {
             # fs_group = 1000
-            run_as_user  = 0
-            privileged = true
+            run_as_user = 0
+            privileged  = true
           }
           port {
             container_port = 8080
@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "jenkins_deployment" {
           }
 
           volume_mount {
-            name      = "jenkins-vol"
+            name       = "jenkins-vol"
             mount_path = "/var/jenkins_home"
           }
         }

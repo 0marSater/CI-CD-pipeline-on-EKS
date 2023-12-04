@@ -1,25 +1,25 @@
 resource "kubernetes_role" "jenkins_role" {
   metadata {
-    name = "jenkins-role"
+    name      = "jenkins-role"
     namespace = "jenkins-ns"
   }
 
   rule {
-    api_groups     = [""]
-    resources      = ["pods"]
-    verbs          = ["create","delete","get","list","patch","update","watch"]
+    api_groups = [""]
+    resources  = ["pods"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
   }
   rule {
     api_groups = [""]
     resources  = ["pods/exec"]
-    verbs      = ["create","delete","get","list","patch","update","watch"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
   }
   rule {
     api_groups = [""]
     resources  = ["pods/log"]
-    verbs      = ["get","list","watch"]
+    verbs      = ["get", "list", "watch"]
   }
-  
+
   rule {
     api_groups = [""]
     resources  = ["secrets"]
@@ -31,29 +31,25 @@ resource "kubernetes_role" "jenkins_role" {
     verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
   }
   rule {
-    api_groups = ["apps"]
+    api_groups = [""]
     resources  = ["deployments"]
     verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
   }
-}
+  rule {
+    api_groups = [""]
+    resources  = ["services"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
+  }
 
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: Role
-# metadata:
-#   name: jenkins
-#   namespace: jenkins-ns
-#   labels:
-#     "app.kubernetes.io/name": 'jenkins'
-# rules:
-# - apiGroups: [""]
-#   resources: ["pods"]
-#   verbs: ["create","delete","get","list","patch","update","watch"]
-# - apiGroups: [""]
-#   resources: ["pods/exec"]
-#   verbs: ["create","delete","get","list","patch","update","watch"]
-# - apiGroups: [""]
-#   resources: ["pods/log"]
-#   verbs: ["get","list","watch"]
-# - apiGroups: [""]
-#   resources: ["secrets"]
-#   verbs: ["get"]
+  rule {
+    api_groups = [""]
+    resources  = ["persistentvolumes"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
+  }
+
+  rule {
+    api_groups = [""]
+    resources  = ["persistentvolumeclaims"]
+    verbs      = ["create", "delete", "get", "list", "patch", "update", "watch"]
+  }
+}

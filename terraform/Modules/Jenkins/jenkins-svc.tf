@@ -1,6 +1,6 @@
 resource "kubernetes_service" "jenkins_http" {
   metadata {
-    name = "jenkins-service"
+    name      = "jenkins-service"
     namespace = "jenkins-ns"
   }
   spec {
@@ -19,7 +19,7 @@ resource "kubernetes_service" "jenkins_http" {
 
 resource "kubernetes_service" "jenkins_jnlp" {
   metadata {
-    name = "jenkins-jnlp-service"
+    name      = "jenkins-jnlp-service"
     namespace = "jenkins-ns"
 
   }

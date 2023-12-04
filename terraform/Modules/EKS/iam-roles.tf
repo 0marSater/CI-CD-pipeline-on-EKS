@@ -81,7 +81,7 @@ resource "aws_iam_policy" "ebs_csi_iam_policy" {
   name        = "AmazonEKS_EBS_CSI_Driver_Policy"
   path        = "/"
   description = "EBS CSI IAM Policy"
-  policy = data.http.ebs_csi_iam_policy.response_body
+  policy      = data.http.ebs_csi_iam_policy.response_body
 }
 
 
@@ -98,11 +98,11 @@ resource "aws_iam_role" "ebs_csi_iam_role" {
           Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${local.oidc_provider}"
         }
         Condition = {
-          StringEquals = {            
-                "${local.oidc_provider}:aud" : "sts.amazonaws.com",
-                "${local.oidc_provider}:sub" : "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+          StringEquals = {
+            "${local.oidc_provider}:aud" : "sts.amazonaws.com",
+            "${local.oidc_provider}:sub" : "system:serviceaccount:kube-system:ebs-csi-controller-sa"
           }
-        }        
+        }
 
       },
     ]
@@ -114,6 +114,6 @@ resource "aws_iam_role" "ebs_csi_iam_role" {
 
 # Associate EBS CSI IAM Policy to EBS CSI IAM Role
 resource "aws_iam_role_policy_attachment" "ebs_csi_iam_role_policy_attach" {
-  policy_arn = aws_iam_policy.ebs_csi_iam_policy.arn 
+  policy_arn = aws_iam_policy.ebs_csi_iam_policy.arn
   role       = aws_iam_role.ebs_csi_iam_role.name
 }

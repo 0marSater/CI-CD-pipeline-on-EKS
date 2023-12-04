@@ -1,6 +1,6 @@
 resource "kubernetes_service_account" "jenkins_sa" {
   metadata {
-    name = "jenkins-admin"
+    name      = "jenkins-admin"
     namespace = "jenkins-ns"
   }
 }

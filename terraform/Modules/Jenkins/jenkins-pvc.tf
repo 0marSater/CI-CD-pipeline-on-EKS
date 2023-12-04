@@ -1,6 +1,6 @@
 resource "kubernetes_persistent_volume_claim" "jenkins_vol" {
   metadata {
-    name = "jenkins-vol"
+    name      = "jenkins-vol"
     namespace = "jenkins-ns"
 
   }
@@ -11,7 +11,7 @@ resource "kubernetes_persistent_volume_claim" "jenkins_vol" {
         storage = "15Gi"
       }
     }
-    storage_class_name = kubernetes_storage_class.ebs_sc.metadata[0].name  
+    storage_class_name = kubernetes_storage_class.ebs_sc.metadata[0].name
   }
 }
 
