@@ -2,5 +2,5 @@
 .idea/
 terraform/.terraform
 terraform/.terraform.*
-terraform/terraform.tfstate
+terraform/terraform.tfstate.*
 k8s/Jenkins
