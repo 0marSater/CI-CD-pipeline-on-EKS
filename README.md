@@ -44,6 +44,7 @@ To begin, follow these steps:
    > You don't need to specify the ***Kubernetes URL***, as Jenkins is running as a pod and can connect to it seamlessly.
 
 - Generate credentials with the id ***KUBECONFIGFILE***, selecting the type as ***Secret File***, and upload the file by browsing to ./kube/config file.
+  ![credentails](./Images/Credentails.png)
 - Create a pipeline project
 - Start build your project, Jenkisn will use kubectl pod to run kubectl command to deploy app manifest.
   > Refere to pod manifest [kaniko-kubectl.yaml](./kaniko-kubectl.yaml)
