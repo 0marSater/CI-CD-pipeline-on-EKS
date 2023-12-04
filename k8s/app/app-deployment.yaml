@@ -1,42 +1,32 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: flask-app
-#   namespace: jenkins-ns
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       name: flask-app
-#   template:
-#     metadata:
-#       labels:
-#         name: flask-app
-#     spec:
-#       imagePullSecrets:
-#       - name: my-registery-key
-#       containers:
-#       - name: flask-app
-#         image: omarsater/private-repo:python-v1.1
-#         ports:
-#           - containerPort: 5000
-#         volumeMounts:
-#           - name: app-vol
-#             mountPath: /app/data
-#       volumes:
-#       - name: app-vol  
-#         persistentVolumeClaim:
-#           claimName: app-vol  
-
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: nginx-pod
-  namespace: jenkins-ns
-
+  name: flask-app
+  namespace: app-ns
 spec:
-  containers:
-    - name: nginx
-      image: nginx:latest
-      ports:
-        - containerPort: 80
+  replicas: 1
+  selector:
+    matchLabels:
+      name: flask-app
+  template:
+    metadata:
+      labels:
+        name: flask-app
+    spec:
+      imagePullSecrets:
+      - name: my-registery-key
+      containers:
+      - name: flask-app
+        image: omarsater/private-repo:python-v1.1
+        ports:
+          - containerPort: 5000
+        volumeMounts:
+          - name: app-vol
+            mountPath: /app/data
+      volumes:
+      - name: app-vol  
+        persistentVolumeClaim:
+          claimName: app-vol  
+
+
+
