@@ -40,7 +40,7 @@ pipeline {
                          ./aws/install &&
                         
                         # Modify app-deployment.yaml file with the image tag.
-                        sed -i 's/python-v1.1/python-${commitHash}/' /k8s/app/app-deployment.yaml &&
+                        sed -i 's/python-v1.1/python-${commitHash}/' ${WORKSPACE}/k8s/app/app-deployment.yaml &&
 
                         # Deploy app
                         kubectl apply -f ${WORKSPACE}/k8s/app/app-ns.yaml &&  
