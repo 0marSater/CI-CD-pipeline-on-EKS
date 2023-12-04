@@ -23,20 +23,34 @@ Implemented Jenkins for Continuous Integration and Continuous Deployment (CI/CD)
 To begin, follow these steps:
 - Clone project.
 - Initiate the infrastructure provisioning with the command `terraform apply --auto-approve`, resulting in the creation of 35 resources on AWS.
-- Configure the /kube/config file to reference the created cluster by executing the command: ` aws eks update-kubeconfig --region eu-west-1 --name my-cluster` #
-- Access to Jenkins GUI by Extracting the LoadBalancer URL: `kuebctl get svc -n jenkins-ns` #
+- Configure the /kube/config file to reference the created cluster by executing the command: ` aws eks update-kubeconfig --region eu-west-1 --name my-cluster` 
+- Navigate to Jenkins GUI by Extracting the LoadBalancer URL: `kuebctl get svc -n jenkins-ns` ![services](./Images/Services.png)
+- Extract IntialAdminPassword to access Jenkins GUI by copying it from jenkins pod's log.
+  ```
+  kubectl get pod -n jenkins-ns
+  kubectl logs <pod-id> -n jenkins-ns
+  ```
 
 ## Configure Jenkins GUI 
 - Navigate to Manage Jenkins and install the follwoing plugin
   1. Kubernetes.
   2. Kubernetes CLI.
-- Naviage to manage Cloud and set up new Cloud as shown below: #
-  1. test your connection, it should be successully connect, else check the configuration again.
-    > You don't need to specify the Cluster URL, as Jenkins is running as a pod and can connect to it seamlessly.
+- Naviage to manage Cloud and set up new Cloud as shown below: 
+  ![services](./Images/cloud_1.png)
+  ![services](./Images/cloud_2.png)
+
+- test your connection, it should be successully connect, else check the configuration again.
+
+   > You don't need to specify the ***Kubernetes URL***, as Jenkins is running as a pod and can connect to it seamlessly.
+
 - Generate credentials with the id ***KUBECONFIGFILE***, selecting the type as ***Secret File***, and upload the file by browsing to ./kube/config file.
 - Create a pipeline project
 - Start build your project, Jenkisn will use kubectl pod to run kubectl command to deploy app manifest.
-  > Refere to pod manifest [here](./kainko-kubectl.yaml)
+  > Refere to pod manifest [kaniko-kubectl.yaml](./kaniko-kubectl.yaml)
+- Check if the application manifest created by typing `kubectl get all -n app-ns`:
+  ![app](./Images/app.png)
+- Finally, navigate to ***lb-URL:5000***
+    ![app](./Images/app-2.png)
 
 ## Clean up 
 - To Clean up resources, execute  ` terraform destroy --auto-approve `. 
