@@ -3,7 +3,6 @@
 It contain 3 stages:
 
 ![Pipeline Image](./Images/pipeline.png)
-
 ## 1 - Checkout:
 This stage involves checking out the source code from the version control system using the checkout scm command. 
 ```
