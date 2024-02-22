@@ -16,7 +16,7 @@ Implemented containerization and pushed the [Docker image](./Dockerfile) for the
 ## Jenkins 
 Implemented Jenkins for Continuous Integration and Continuous Deployment (CI/CD) to ensure a streamlined and efficient software development and delivery process, harnessing the powerful plugins to enhance its capabilities. [Pipeline Image](https://prnt.sc/RzOrXHsGhLUN)
 
-> For more details about jenkisn pipeline stages, you can navigate to [README.md](./Jenkins/README.md).
+> For more details about jenkisn pipeline stages, you can navigate to [README.md](./jenkins/README.md).
 
 ---
 ## Getting Started
