@@ -1,6 +1,6 @@
 # Jenkinsfile
 
-It contain 3 stages:
+It contains 3 stages:
 
 ![Pipeline Image](../Images/pipeline.png)
 ## 1 - Checkout:
