@@ -50,7 +50,7 @@ To begin, follow these steps:
   > Refere to pod manifest [kaniko-kubectl.yaml](./jenkins/kaniko-kubectl.yaml)
 - Check if the application manifest created by typing `kubectl get all -n app-ns`:
   ![app](./Images/app.png)
-- Finally, navigate to ***<lb-URL>:5000***
+- Finally, navigate to ***lb-URL:5000***
     ![app](./Images/app-2.png)
 
 ## Clean up 
