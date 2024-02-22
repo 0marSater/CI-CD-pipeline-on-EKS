@@ -47,7 +47,7 @@ To begin, follow these steps:
   ![credentails](./Images/Credentails.png)
 - Create a pipeline project
 - Start build your project, Jenkisn will use kubectl pod to run kubectl command to deploy app manifest.
-  > Refere to pod manifest [kaniko-kubectl.yaml](./kaniko-kubectl.yaml)
+  > Refere to pod manifest [kaniko-kubectl.yaml](./jenkins/kaniko-kubectl.yaml)
 - Check if the application manifest created by typing `kubectl get all -n app-ns`:
   ![app](./Images/app.png)
 - Finally, navigate to ***lb-URL:5000***
