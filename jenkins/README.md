@@ -35,6 +35,11 @@ This stage is dedicated to building and pushing a Docker image using the ***Kain
 # 3 - Deploy on EKS:
 
 This stage is responsible for Deploying our app manifest on AWS EKS using container ***kubectl***, and it contains:
+- KUBECONFIGFILE Credentials: Utilize the /kube/config file containing essential information to enable the kubectl container to connect to your cluster.
+- Install required packages for downloading AWS-CLI.
+- Update the image tag within the app-deployment.yaml file to include the commit hash from the built image.
+- Deploy the application manifest.
+
 ```
   stage('Deploy on EKS') {
               steps {
@@ -65,7 +70,4 @@ This stage is responsible for Deploying our app manifest on AWS EKS using contai
               }
           }
 ```
-- KUBECONFIGFILE Credentials: Utilize the /kube/config file containing essential information to enable the kubectl container to connect to your cluster.
-- Install required packages for downloading AWS-CLI.
-- Update the image tag within the app-deployment.yaml file to include the commit hash from the built image.
-- Deploy the application manifest.
+
