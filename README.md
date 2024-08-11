@@ -16,7 +16,7 @@ Implemented containerization and pushed the [Docker image](./Dockerfile) for the
 ## Jenkins 
 Implemented Jenkins for Continuous Integration and Continuous Deployment (CI/CD) to ensure a streamlined and efficient software development and delivery process, harnessing the powerful plugins to enhance its capabilities. [Pipeline Image](https://prnt.sc/RzOrXHsGhLUN)
 
-> For more details about jenkisn pipeline stages, you can navigate to [README.md](./jenkins/README.md).
+
 
 ---
 ## Getting Started
@@ -46,8 +46,9 @@ To begin, follow these steps:
 - Generate credentials with the id ***KUBECONFIGFILE***, selecting the type as ***Secret File***, and upload the file by browsing to ./kube/config file.
   ![credentails](./Images/Credentails.png)
 - Create a pipeline project
-- Start build your project, Jenkisn will use kubectl pod to run kubectl command to deploy app manifest.
-  > Refere to pod manifest [kaniko-kubectl.yaml](./jenkins/kaniko-kubectl.yaml)
+- Start build your project, Jenkins will use kubectl pod to run kubectl command to deploy app manifest as long as with kainko to build docker image.
+  > Refere to pod manifest [kaniko-kubectl.yaml](./jenkins/kaniko-kubectl.yaml).
+  > For more details about jenkins pipeline stages, you can navigate to [README.md](./jenkins/README.md).
 - Check if the application manifest created by typing `kubectl get all -n app-ns`:
   ![app](./Images/app.png)
 - Finally, navigate to ***lb-URL:5000***
